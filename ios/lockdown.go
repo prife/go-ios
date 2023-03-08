@@ -1,8 +1,9 @@
 package ios
 
 import (
-	log "github.com/sirupsen/logrus"
 	"net"
+
+	log "github.com/sirupsen/logrus"
 )
 
 //Lockdownport is the port of the always running lockdownd on the iOS device.
@@ -38,9 +39,8 @@ func (lockDownConn LockDownConnection) EnableSessionSsl(pairRecord PairRecord) e
 }
 
 //EnableSessionSslServerMode see documentation in DeviceConnection
-func (lockDownConn LockDownConnection) EnableSessionSslServerMode(pairRecord PairRecord) {
-	lockDownConn.deviceConnection.EnableSessionSslServerMode(pairRecord)
-
+func (lockDownConn LockDownConnection) EnableSessionSslServerMode(pairRecord PairRecord) error {
+	return lockDownConn.deviceConnection.EnableSessionSslServerMode(pairRecord)
 }
 
 //Send takes a go struct, converts it to a PLIST and sends it with a 4 byte length field.
